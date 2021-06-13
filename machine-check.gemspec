@@ -3,8 +3,8 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'machine-check/version'
 
 Gem::Specification.new do |s|
-  s.name        = 'machine-check'
-  s.version   = MachineCheck::VERSION
+  s.name          = 'machine-check'
+  s.version       = MachineCheck::VERSION
 
   s.summary       =
   s.description   = 'Export machine parameters to node_exporter'
