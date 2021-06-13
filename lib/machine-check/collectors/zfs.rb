@@ -32,19 +32,19 @@ module MachineCheck
       list = `zpool list -Hp -o name,health,fragmentation,capacity`
 
       if $?.exitstatus != 0
-        @zpool_list_success.set({}, 1)
+        @zpool_list_success.set(1)
         return
       end
 
-      @zpool_list_success.set({}, 0)
-      @zpool_list_parse_success.set({}, 0)
+      @zpool_list_success.set(0)
+      @zpool_list_parse_success.set(0)
       
       list.split("\n").each do |line|
         name, health, fragmentation, capacity = line.split
 
-        @zpool_list_healt.set({name: name}, health == 'ONLINE' ? 0 : 1)
-        @zpool_list_fragmentation.set({name: name}, fragmentation.to_i)
-        @zpool_list_capacity.set({name: name}, capacity.to_i)
+        @zpool_list_healt.set(health == 'ONLINE' ? 0 : 1, labels: {name: name})
+        @zpool_list_fragmentation.set(fragmentation.to_i, labels: {name: name})
+        @zpool_list_capacity.set(capacity.to_i, labels: {name: name})
       end
     end
   end

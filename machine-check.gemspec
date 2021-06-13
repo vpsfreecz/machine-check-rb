@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 2.0.0'
 
-  s.add_runtime_dependency 'prometheus-client', '~> 0.9.0'
+  s.add_runtime_dependency 'prometheus-client', '~> 2.1.0'
   s.add_runtime_dependency 'require_all', '~> 2.0.0'
   s.add_development_dependency 'rake'
 end
