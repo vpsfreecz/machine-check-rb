@@ -17,6 +17,7 @@ module MachineCheck
 
     def run
       [
+        Collectors::Sysctl,
         Collectors::Zfs,
       ].each do |klass|
         c = klass.new(registry)
