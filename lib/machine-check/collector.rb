@@ -17,6 +17,7 @@ module MachineCheck
 
     def run
       [
+        Collectors::KernelKeyring,
         Collectors::Sysctl,
         Collectors::Zfs,
       ].each do |klass|
