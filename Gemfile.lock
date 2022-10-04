@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    machine-check (0.2.0)
+    machine-check (0.3.0)
       prometheus-client (~> 2.1.0)
       require_all (~> 2.0.0)
 
