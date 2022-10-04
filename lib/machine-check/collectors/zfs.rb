@@ -14,17 +14,17 @@ module MachineCheck
       @zpool_list_health = registry.gauge(
         :zpool_list_health,
         docstring: 'Pool healthy',
-        labels: [:name],
+        labels: [:pool],
       )
       @zpool_list_fragmentation = registry.gauge(
         :zpool_list_fragmentation,
         docstring: 'Pool fragmentation',
-        labels: [:name],
+        labels: [:pool],
       )
       @zpool_list_capacity = registry.gauge(
         :zpool_list_capacity,
         docstring: 'Pool capacity',
-        labels: [:name],
+        labels: [:pool],
       )
     end
 
@@ -42,9 +42,9 @@ module MachineCheck
       list.split("\n").each do |line|
         name, health, fragmentation, capacity = line.split
 
-        @zpool_list_health.set(health == 'ONLINE' ? 0 : 1, labels: {name: name})
-        @zpool_list_fragmentation.set(fragmentation.to_i, labels: {name: name})
-        @zpool_list_capacity.set(capacity.to_i, labels: {name: name})
+        @zpool_list_health.set(health == 'ONLINE' ? 0 : 1, labels: {pool: name})
+        @zpool_list_fragmentation.set(fragmentation.to_i, labels: {pool: name})
+        @zpool_list_capacity.set(capacity.to_i, labels: {pool: name})
       end
     end
   end
